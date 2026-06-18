@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from sqlalchemy import text
 from app.db.database import engine
+from app.db.database import Base
 from app.api.products import router as product_router
 from app.api.api.customers import router as customer_router
 from app.api.api.dashboard import router as dashboard_router
@@ -8,6 +9,9 @@ from fastapi.exceptions import RequestValidationError
 from app.middleware.cors import configure_cors
 from app.utils.exceptions import validation_exception_handler
 from app.api.api.orders import router as order_router
+
+
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="Inventory Management API",
@@ -20,6 +24,8 @@ app.add_exception_handler(
     RequestValidationError,
     validation_exception_handler
 )
+
+
 
 @app.get("/")
 def home():
