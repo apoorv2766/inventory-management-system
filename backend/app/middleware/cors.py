@@ -9,9 +9,11 @@ def configure_cors(app):
 
         allow_origins=[
 
-            "http://localhost:5173", "http://localhost:3000"
+            "http://localhost:5173", "http://localhost:3000", "https://inventory-management-system-eta-seven.vercel.app"
 
         ],
+
+        allow_origin_regex=r"https://inventory-management-system-.*\.vercel\.app",
 
         allow_credentials=True,
 

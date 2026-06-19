@@ -8,6 +8,7 @@ from fastapi.exceptions import RequestValidationError
 from app.middleware.cors import configure_cors
 from app.utils.exceptions import validation_exception_handler
 from app.api.api.orders import router as order_router
+from fastapi.middleware.cors import CORSMiddleware
 
 
 
